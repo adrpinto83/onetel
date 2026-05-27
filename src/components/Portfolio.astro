@@ -1,0 +1,125 @@
+---
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: 'es' | 'en';
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const cases = [
+  {
+    title: t('portfolio.case1.title'),
+    industry: t('portfolio.case1.industry'),
+    description: t('portfolio.case1.description'),
+    metric: t('portfolio.case1.metric'),
+    icon: 'factory',
+    color: 'blue',
+  },
+  {
+    title: t('portfolio.case2.title'),
+    industry: t('portfolio.case2.industry'),
+    description: t('portfolio.case2.description'),
+    metric: t('portfolio.case2.metric'),
+    icon: 'oil',
+    color: 'orange',
+  },
+  {
+    title: t('portfolio.case3.title'),
+    industry: t('portfolio.case3.industry'),
+    description: t('portfolio.case3.description'),
+    metric: t('portfolio.case3.metric'),
+    icon: 'lightning',
+    color: 'blue',
+  },
+  {
+    title: t('portfolio.case4.title'),
+    industry: t('portfolio.case4.industry'),
+    description: t('portfolio.case4.description'),
+    metric: t('portfolio.case4.metric'),
+    icon: 'food',
+    color: 'orange',
+  },
+];
+---
+
+<section id="portfolio" class="py-20 lg:py-28 bg-gradient-to-b from-onetel-black to-gray-900">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-16 reveal">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+        {t('portfolio.title')}
+      </h2>
+      <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+        {t('portfolio.subtitle')}
+      </p>
+    </div>
+
+    <!-- Cases Grid -->
+    <div class="grid md:grid-cols-2 gap-8">
+      {cases.map((caseItem, index) => (
+        <div class="reveal group" style={`animation-delay: ${index * 0.1}s;`}>
+          <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-onetel-blue/50 transition-all duration-300 hover:-translate-y-2 h-full">
+            <div class="flex items-start justify-between mb-6">
+              <div>
+                <span class={`inline-block text-xs font-semibold px-3 py-1 rounded-full mb-3 ${caseItem.color === 'blue' ? 'bg-onetel-blue/20 text-onetel-blue' : 'bg-onetel-orange/20 text-onetel-orange'}`}>
+                  {caseItem.industry}
+                </span>
+                <h3 class="text-xl font-bold text-white">{caseItem.title}</h3>
+              </div>
+              <div class={`w-14 h-14 rounded-xl flex items-center justify-center ${caseItem.color === 'blue' ? 'bg-onetel-blue/20' : 'bg-onetel-orange/20'}`}>
+                {caseItem.icon === 'factory' && (
+                  <svg class={`w-7 h-7 ${caseItem.color === 'blue' ? 'text-onetel-blue' : 'text-onetel-orange'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                  </svg>
+                )}
+                {caseItem.icon === 'oil' && (
+                  <svg class={`w-7 h-7 ${caseItem.color === 'blue' ? 'text-onetel-blue' : 'text-onetel-orange'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"></path>
+                  </svg>
+                )}
+                {caseItem.icon === 'lightning' && (
+                  <svg class={`w-7 h-7 ${caseItem.color === 'blue' ? 'text-onetel-blue' : 'text-onetel-orange'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  </svg>
+                )}
+                {caseItem.icon === 'food' && (
+                  <svg class={`w-7 h-7 ${caseItem.color === 'blue' ? 'text-onetel-blue' : 'text-onetel-orange'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z"></path>
+                  </svg>
+                )}
+              </div>
+            </div>
+
+            <p class="text-gray-400 mb-6 leading-relaxed">{caseItem.description}</p>
+
+            <div class="flex items-center justify-between pt-6 border-t border-white/10">
+              <span class="text-sm text-gray-500">{lang === 'es' ? 'Resultado' : 'Result'}</span>
+              <span class={`text-xl font-bold ${caseItem.color === 'blue' ? 'text-onetel-blue' : 'text-onetel-orange'}`}>
+                {caseItem.metric}
+              </span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-12 reveal">
+      <p class="text-gray-400 mb-6">
+        {lang === 'es' ? '¿Listo para ser nuestro próximo caso de éxito?' : 'Ready to be our next success story?'}
+      </p>
+      <a
+        href="#contacto"
+        class="inline-flex items-center bg-onetel-blue text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-all shadow-lg hover:shadow-onetel-blue/25"
+      >
+        {lang === 'es' ? 'Iniciar Proyecto' : 'Start Project'}
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

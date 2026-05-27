@@ -1,0 +1,103 @@
+---
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: 'es' | 'en';
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const testimonials = [
+  {
+    quote: t('testimonials.quote1'),
+    author: t('testimonials.author1'),
+    role: t('testimonials.role1'),
+    initials: 'CM',
+  },
+  {
+    quote: t('testimonials.quote2'),
+    author: t('testimonials.author2'),
+    role: t('testimonials.role2'),
+    initials: 'MG',
+  },
+  {
+    quote: t('testimonials.quote3'),
+    author: t('testimonials.author3'),
+    role: t('testimonials.role3'),
+    initials: 'RS',
+  },
+];
+---
+
+<section class="py-20 lg:py-28 bg-onetel-gray-light">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-16 reveal">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-onetel-black mb-4">
+        {t('testimonials.title')}
+      </h2>
+      <p class="text-lg text-onetel-gray-dark max-w-2xl mx-auto">
+        {t('testimonials.subtitle')}
+      </p>
+    </div>
+
+    <!-- Testimonials Grid -->
+    <div class="grid md:grid-cols-3 gap-8">
+      {testimonials.map((testimonial, index) => (
+        <div class="reveal" style={`animation-delay: ${index * 0.1}s;`}>
+          <div class="bg-white rounded-2xl p-8 shadow-lg h-full flex flex-col relative">
+            <!-- Quote Icon -->
+            <div class="absolute -top-4 left-8">
+              <div class="w-8 h-8 bg-onetel-blue rounded-full flex items-center justify-center">
+                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Quote -->
+            <p class="text-onetel-gray-dark leading-relaxed flex-grow mt-4 italic">
+              "{testimonial.quote}"
+            </p>
+
+            <!-- Author -->
+            <div class="flex items-center mt-8 pt-6 border-t border-gray-100">
+              <div class="w-12 h-12 bg-gradient-to-br from-onetel-blue to-onetel-orange rounded-full flex items-center justify-center text-white font-bold">
+                {testimonial.initials}
+              </div>
+              <div class="ml-4">
+                <h4 class="font-semibold text-onetel-black">{testimonial.author}</h4>
+                <p class="text-sm text-onetel-gray-dark">{testimonial.role}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Trust Indicators -->
+    <div class="mt-16 reveal">
+      <div class="bg-white rounded-2xl p-8 shadow-lg">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div>
+            <div class="text-3xl font-bold text-onetel-blue mb-2">98%</div>
+            <div class="text-sm text-onetel-gray-dark">{lang === 'es' ? 'Satisfacción del Cliente' : 'Client Satisfaction'}</div>
+          </div>
+          <div>
+            <div class="text-3xl font-bold text-onetel-orange mb-2">100%</div>
+            <div class="text-sm text-onetel-gray-dark">{lang === 'es' ? 'Proyectos Entregados' : 'Projects Delivered'}</div>
+          </div>
+          <div>
+            <div class="text-3xl font-bold text-onetel-blue mb-2">4.9/5</div>
+            <div class="text-sm text-onetel-gray-dark">{lang === 'es' ? 'Calificación Promedio' : 'Average Rating'}</div>
+          </div>
+          <div>
+            <div class="text-3xl font-bold text-onetel-orange mb-2">85%</div>
+            <div class="text-sm text-onetel-gray-dark">{lang === 'es' ? 'Clientes Recurrentes' : 'Returning Clients'}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

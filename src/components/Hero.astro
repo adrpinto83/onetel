@@ -1,0 +1,92 @@
+---
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: 'es' | 'en';
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const basePath = lang === 'es' ? '' : '/en';
+---
+
+<section id="inicio" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 lg:pt-20">
+  <!-- Background with gradient -->
+  <div class="absolute inset-0 bg-gradient-to-br from-onetel-black via-gray-900 to-onetel-black">
+    <!-- Animated background elements -->
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-onetel-blue rounded-full filter blur-3xl animate-float"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-onetel-orange rounded-full filter blur-3xl animate-float" style="animation-delay: 1.5s;"></div>
+    </div>
+    <!-- Grid pattern overlay -->
+    <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;0.4&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="animate-fade-in">
+      <!-- Badge -->
+      <div class="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/80 text-sm font-medium mb-8">
+        <span class="w-2 h-2 bg-onetel-orange rounded-full mr-2 animate-pulse"></span>
+        Partner Oficial de Yokogawa
+      </div>
+
+      <!-- Main Title -->
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight">
+        {t('hero.title').split(' ').slice(0, 2).join(' ')}
+        <span class="text-onetel-blue"> {t('hero.title').split(' ').slice(2, 3).join(' ')}</span>
+        <br class="hidden sm:block" />
+        <span class="text-onetel-orange">{t('hero.title').split(' ').slice(3).join(' ')}</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mb-10">
+        {t('hero.subtitle')}
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href={`${basePath}/#servicios`}
+          class="w-full sm:w-auto bg-onetel-blue text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-all shadow-lg hover:shadow-onetel-blue/25 hover:scale-105"
+        >
+          {t('hero.cta')}
+        </a>
+        <a
+          href={`${basePath}/#contacto`}
+          class="w-full sm:w-auto border-2 border-white/30 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10 transition-all hover:border-white/50"
+        >
+          {t('hero.secondary_cta')}
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="text-3xl sm:text-4xl font-bold text-white mb-2">15+</div>
+          <div class="text-gray-400 text-sm">{lang === 'es' ? 'Años de Experiencia' : 'Years of Experience'}</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl sm:text-4xl font-bold text-onetel-blue mb-2">200+</div>
+          <div class="text-gray-400 text-sm">{lang === 'es' ? 'Proyectos Completados' : 'Projects Completed'}</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl sm:text-4xl font-bold text-onetel-orange mb-2">50+</div>
+          <div class="text-gray-400 text-sm">{lang === 'es' ? 'Clientes Satisfechos' : 'Satisfied Clients'}</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl sm:text-4xl font-bold text-white mb-2">24/7</div>
+          <div class="text-gray-400 text-sm">{lang === 'es' ? 'Soporte Técnico' : 'Technical Support'}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <a href={`${basePath}/#servicios`} class="text-white/50 hover:text-white transition-colors">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
+    </a>
+  </div>
+</section>

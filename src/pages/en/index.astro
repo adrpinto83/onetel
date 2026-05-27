@@ -1,0 +1,35 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Hero from '../../components/Hero.astro';
+import Services from '../../components/Services.astro';
+import Alliances from '../../components/Alliances.astro';
+import Portfolio from '../../components/Portfolio.astro';
+import Testimonials from '../../components/Testimonials.astro';
+import About from '../../components/About.astro';
+import Contact from '../../components/Contact.astro';
+import Footer from '../../components/Footer.astro';
+import WhatsAppButton from '../../components/WhatsAppButton.astro';
+
+const lang = 'en';
+const currentPath = '/en/';
+---
+
+<Layout
+  title="OneTel LLC | Telecommunications and Industrial Automation"
+  description="OneTel LLC - Telecommunications and industrial automation solutions in Doral, Florida. Official Yokogawa partner. Smart connectivity for your industry."
+  lang={lang}
+>
+  <Header lang={lang} currentPath={currentPath} />
+  <main>
+    <Hero lang={lang} />
+    <Services lang={lang} />
+    <Alliances lang={lang} />
+    <Portfolio lang={lang} />
+    <Testimonials lang={lang} />
+    <About lang={lang} />
+    <Contact lang={lang} />
+  </main>
+  <Footer lang={lang} />
+  <WhatsAppButton lang={lang} />
+</Layout>

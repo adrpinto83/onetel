@@ -1,0 +1,121 @@
+---
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: 'es' | 'en';
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="servicios" class="py-20 lg:py-28 bg-onetel-gray-light">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-16 reveal">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-onetel-black mb-4">
+        {t('services.title')}
+      </h2>
+      <p class="text-lg text-onetel-gray-dark max-w-2xl mx-auto">
+        {t('services.subtitle')}
+      </p>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Telecommunications -->
+      <div class="reveal bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group hover:-translate-y-2">
+        <div class="w-16 h-16 bg-onetel-blue/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-onetel-blue transition-colors">
+          <svg class="w-8 h-8 text-onetel-blue group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-onetel-black mb-4">{t('services.telecom.title')}</h3>
+        <p class="text-onetel-gray-dark leading-relaxed">{t('services.telecom.description')}</p>
+        <ul class="mt-6 space-y-2">
+          <li class="flex items-center text-sm text-onetel-gray-dark">
+            <svg class="w-5 h-5 text-onetel-orange mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+            </svg>
+            {lang === 'es' ? 'Redes empresariales' : 'Enterprise networks'}
+          </li>
+          <li class="flex items-center text-sm text-onetel-gray-dark">
+            <svg class="w-5 h-5 text-onetel-orange mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+            </svg>
+            {lang === 'es' ? 'Conectividad 24/7' : '24/7 Connectivity'}
+          </li>
+          <li class="flex items-center text-sm text-onetel-gray-dark">
+            <svg class="w-5 h-5 text-onetel-orange mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+            </svg>
+            {lang === 'es' ? 'Infraestructura escalable' : 'Scalable infrastructure'}
+          </li>
+        </ul>
+      </div>
+
+      <!-- Industrial Automation -->
+      <div class="reveal bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group hover:-translate-y-2" style="animation-delay: 0.1s;">
+        <div class="w-16 h-16 bg-onetel-orange/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-onetel-orange transition-colors">
+          <svg class="w-8 h-8 text-onetel-orange group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-onetel-black mb-4">{t('services.automation.title')}</h3>
+        <p class="text-onetel-gray-dark leading-relaxed">{t('services.automation.description')}</p>
+        <ul class="mt-6 space-y-2">
+          <li class="flex items-center text-sm text-onetel-gray-dark">
+            <svg class="w-5 h-5 text-onetel-blue mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+            </svg>
+            {lang === 'es' ? 'Sistemas SCADA' : 'SCADA Systems'}
+          </li>
+          <li class="flex items-center text-sm text-onetel-gray-dark">
+            <svg class="w-5 h-5 text-onetel-blue mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+            </svg>
+            {lang === 'es' ? 'Control de procesos' : 'Process Control'}
+          </li>
+          <li class="flex items-center text-sm text-onetel-gray-dark">
+            <svg class="w-5 h-5 text-onetel-blue mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+            </svg>
+            {lang === 'es' ? 'Tecnología Yokogawa' : 'Yokogawa Technology'}
+          </li>
+        </ul>
+      </div>
+
+      <!-- Custom Solutions -->
+      <div class="reveal bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 md:col-span-2 lg:col-span-1" style="animation-delay: 0.2s;">
+        <div class="w-16 h-16 bg-onetel-black/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-onetel-black transition-colors">
+          <svg class="w-8 h-8 text-onetel-black group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-onetel-black mb-4">{t('services.custom.title')}</h3>
+        <p class="text-onetel-gray-dark leading-relaxed">{t('services.custom.description')}</p>
+        <ul class="mt-6 space-y-2">
+          <li class="flex items-center text-sm text-onetel-gray-dark">
+            <svg class="w-5 h-5 text-onetel-orange mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+            </svg>
+            {lang === 'es' ? 'Consultoría especializada' : 'Specialized Consulting'}
+          </li>
+          <li class="flex items-center text-sm text-onetel-gray-dark">
+            <svg class="w-5 h-5 text-onetel-orange mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+            </svg>
+            {lang === 'es' ? 'Análisis de necesidades' : 'Needs Analysis'}
+          </li>
+          <li class="flex items-center text-sm text-onetel-gray-dark">
+            <svg class="w-5 h-5 text-onetel-orange mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+            </svg>
+            {lang === 'es' ? 'Implementación a medida' : 'Custom Implementation'}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

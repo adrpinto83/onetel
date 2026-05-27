@@ -1,0 +1,117 @@
+---
+import { useTranslations, getAlternatePath, getAlternateLanguage } from '../i18n/utils';
+
+interface Props {
+  lang: 'es' | 'en';
+  currentPath: string;
+}
+
+const { lang, currentPath } = Astro.props;
+const t = useTranslations(lang);
+const alternateLang = getAlternateLanguage(lang);
+const alternatePath = getAlternatePath(currentPath, lang);
+const basePath = lang === 'es' ? '' : '/en';
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm transition-all duration-300" id="header">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+      <!-- Logo -->
+      <a href={`${basePath}/`} class="flex items-center">
+        <img src="/Logo.png" alt="OneTel C.A." class="h-10 lg:h-12 w-auto" />
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center space-x-8">
+        <a href={`${basePath}/#inicio`} class="text-onetel-gray-dark hover:text-onetel-blue transition-colors font-medium">{t('nav.home')}</a>
+        <a href={`${basePath}/#servicios`} class="text-onetel-gray-dark hover:text-onetel-blue transition-colors font-medium">{t('nav.services')}</a>
+        <a href={`${basePath}/#alianzas`} class="text-onetel-gray-dark hover:text-onetel-blue transition-colors font-medium">{t('nav.alliances')}</a>
+        <a href={`${basePath}/#portfolio`} class="text-onetel-gray-dark hover:text-onetel-blue transition-colors font-medium">{t('nav.solutions')}</a>
+        <a href={`${basePath}/#nosotros`} class="text-onetel-gray-dark hover:text-onetel-blue transition-colors font-medium">{t('nav.about')}</a>
+        <a href={`${basePath}/#contacto`} class="text-onetel-gray-dark hover:text-onetel-blue transition-colors font-medium">{t('nav.contact')}</a>
+      </div>
+
+      <!-- CTA & Language Switcher -->
+      <div class="hidden lg:flex items-center space-x-4">
+        <a
+          href={alternatePath}
+          class="text-sm text-onetel-gray-dark hover:text-onetel-blue transition-colors font-medium uppercase"
+        >
+          {alternateLang.toUpperCase()}
+        </a>
+        <a
+          href={`${basePath}/#contacto`}
+          class="bg-onetel-blue text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-md hover:shadow-lg"
+        >
+          {t('nav.cta')}
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        type="button"
+        class="lg:hidden p-2 rounded-md text-onetel-gray-dark hover:text-onetel-blue hover:bg-gray-100 transition-colors"
+        id="mobile-menu-button"
+        aria-label="Toggle menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" id="menu-icon-open"></path>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" id="menu-icon-close" class="hidden"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="lg:hidden hidden" id="mobile-menu">
+      <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t">
+        <a href={`${basePath}/#inicio`} class="block px-3 py-2 text-onetel-gray-dark hover:text-onetel-blue hover:bg-gray-50 rounded-md font-medium">{t('nav.home')}</a>
+        <a href={`${basePath}/#servicios`} class="block px-3 py-2 text-onetel-gray-dark hover:text-onetel-blue hover:bg-gray-50 rounded-md font-medium">{t('nav.services')}</a>
+        <a href={`${basePath}/#alianzas`} class="block px-3 py-2 text-onetel-gray-dark hover:text-onetel-blue hover:bg-gray-50 rounded-md font-medium">{t('nav.alliances')}</a>
+        <a href={`${basePath}/#portfolio`} class="block px-3 py-2 text-onetel-gray-dark hover:text-onetel-blue hover:bg-gray-50 rounded-md font-medium">{t('nav.solutions')}</a>
+        <a href={`${basePath}/#nosotros`} class="block px-3 py-2 text-onetel-gray-dark hover:text-onetel-blue hover:bg-gray-50 rounded-md font-medium">{t('nav.about')}</a>
+        <a href={`${basePath}/#contacto`} class="block px-3 py-2 text-onetel-gray-dark hover:text-onetel-blue hover:bg-gray-50 rounded-md font-medium">{t('nav.contact')}</a>
+        <div class="flex items-center justify-between px-3 py-2 border-t mt-2">
+          <a href={alternatePath} class="text-sm text-onetel-gray-dark hover:text-onetel-blue font-medium uppercase">
+            {alternateLang.toUpperCase()} Version
+          </a>
+          <a href={`${basePath}/#contacto`} class="bg-onetel-blue text-white px-4 py-2 rounded-lg font-semibold text-sm">
+            {t('nav.cta')}
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIconOpen = document.getElementById('menu-icon-open');
+  const menuIconClose = document.getElementById('menu-icon-close');
+
+  mobileMenuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+    menuIconOpen?.classList.toggle('hidden');
+    menuIconClose?.classList.toggle('hidden');
+  });
+
+  // Close mobile menu when clicking on a link
+  const mobileLinks = mobileMenu?.querySelectorAll('a');
+  mobileLinks?.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+      menuIconOpen?.classList.remove('hidden');
+      menuIconClose?.classList.add('hidden');
+    });
+  });
+
+  // Header scroll effect
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+      header?.classList.add('shadow-md');
+    } else {
+      header?.classList.remove('shadow-md');
+    }
+  });
+</script>
